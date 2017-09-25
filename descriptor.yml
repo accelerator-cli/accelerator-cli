@@ -1,0 +1,33 @@
+acc-version: 1
+container-platform: {ECS|Kubernetes}
+api-descriptor: {swagger}
+services:
+  service-name:
+    image-id: "exampleService"
+    languaje: "java"
+    framework: "vertx"
+    authentication: "jwt"
+    authentication-roles:
+      - user
+      - admin
+    framework-opts:
+      communications: http 
+    entities:
+      - entityName:
+          operations:
+            operation-name:
+              action: filter
+              roles: user
+              options:
+              - limit
+              - skip
+              - sort
+            operation2-name:
+              action: get
+              roles: user
+            operation3-name:
+              action: post
+              roles: user
+            post:
+            put:
+            delete:
